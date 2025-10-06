@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign-up</title>
+  <link rel="stylesheet" href="sign-up.css">
+</head>
+<body>
+ 
+  <script>
+  document.getElementById('signup-form').addEventListener('submit', function(event) {
+    const now = new Date();
+    const year = now.getFullYear();
+    const month = String(now.getMonth() + 1).padStart(2, '0');
+    const day = String(now.getDate()).padStart(2, '0');
+    const hours = String(now.getHours()).padStart(2, '0');
+    const minutes = String(now.getMinutes()).padStart(2, '0');
+    const seconds = String(now.getSeconds()).padStart(2, '0');
+
+    const formattedDate = `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
+
+    document.getElementById('creation_date').value = formattedDate;
+  });
+</script>
+  
+  <main>
+    <div class="img-Container">
+     <img src="imgs/Hero_Image_Banking_and_Finance.webp" id="sign-pict">
+    </div>
+
+    <form action="" class="content-container" id="signup-form">
+       <h2>Sign-up</h2>
+      <label for="fname">Full Name:</label>
+      <input type="text" name="Fname" id="fname" required placeholder="Enter your full Name">
+
+      
+
+      <label for="email">Email:</label>
+      <input type="email" name="Email" id="email" required placeholder="Enter your Email">
+
+      <label for="Password" >Password</label>
+      <input type="password" name="password" id="Password" required placeholder="Enter your password">
+
+
+      <label for="user_type">Select Account Type:</label>
+      <select id="user_type" name="user_type" required>
+          <option value="">--Please choose an option--</option>
+          <option value="admin" >Admin</option>
+          <option value="client">Client</option>
+      </select>
+
+      <label for="phoneN">Phone Number:</label>
+      <input name="phone" placeholder="Enter your phone number" pattern="[0-9]{10,15}" required id="phoneN">
+
+      <label for="birth_date">Date of Birth:</label>
+      <input type="date" id="birth_date" name="birth_date" required />
+
+      <label for="address">Full Address:</label>
+      <textarea id="address" name="address" rows="4" placeholder="Enter your full address" required></textarea>
+      <!-- about the enrollment data i don't think is a good practice to let the user enter it ,we can use backend when the user register the date go automatically to the database or i will use javaScript for that up to you guys-->
+      <input type="hidden" id="creation_date" name="creation_date" value="">
+      <span class="last-section">
+        <input type="submit" name="submit" value="Create an account" id="submit">
+        <p>Already have an account? <a href="login.html">Sign in</a></p>
+      </span>
+    </form>
+  </main>
+</body>
+</html>
